@@ -1,0 +1,132 @@
+<div class="min-vh-100 bg-gradient" (hidden.bs.modal)="onModalClose()">
+  <nav class="navbar navbar-dark bg-purple shadow-lg">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1">Styring</span>
+      <span class="text-light">Seu gerenciador de tarefas</span>
+    </div>
+  </nav>
+
+  <div class="container py-5 d-grid gap-3">
+    <div>
+      <div class="d-inline-flex w-100">
+        <form
+          class="w-100"
+          [formGroup]="filterForm"
+          (change)="onSearchSubmit()"
+        >
+          <input
+            type="text"
+            class="form-control"
+            name="newTask"
+            placeholder="Pesquisar tarefa..."
+            formControlName="searchValue"
+          />
+        </form>
+        <button
+          data-bs-toggle="modal"
+          data-bs-target="#taskModal"
+          class="btn btn-purple d-flex align-items-center gap-2"
+        >
+          <img src="../assets/plus_icon.svg" />
+          <span class="d-none d-md-inline">Adicionar</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column gap-3 scrollable-container">
+      <div *ngFor="let task of tasks">
+        <div
+          class="clickable"
+          (click)="openTaskModal(task)"
+          data-bs-toggle="modal"
+          data-bs-target="#taskModal"
+        >
+          <div class="card">
+            <div
+              class="card-header fw-bold d-flex flex-column align-items-center"
+            >
+              {{ task.title }}
+              <div
+                class="badge text-wrap"
+                [ngStyle]="{ 'background-color': getStatusColor(task.status) }"
+              >
+                {{ task.status }}
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="d-flex gap-2">
+                <img src="../assets/calendar_icon.svg" />
+                <div class="gap-2">Data Final: {{ task.dueDate }}</div>
+              </div>
+              <p class="card-text">{{ task.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="filterModal"
+    tabindex="-1"
+    aria-labelledby="filterModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filterModalLabel">Filtrar Tarefas</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="filterForm" (ngSubmit)="loadTasks()">
+            <div class="mb-3">
+              <label for="status" class="form-label">Status</label>
+              <select class="form-control" id="status" formControlName="status">
+                <option value="all">Todos</option>
+                <option value="Pendente">Pendente</option>
+                <option value="Em andamento">Em andamento</option>
+                <option value="Concluído">Concluído</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="dueDate" class="form-label">Data de Conclusão</label>
+              <input
+                type="date"
+                class="form-control"
+                id="dueDate"
+                formControlName="dueDate"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Aplicar Filtros
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="btn bg-purple position-fixed bottom-0 end-0 m-4"
+    data-bs-toggle="modal"
+    data-bs-target="#filterModal"
+    style="
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    "
+  >
+    <img src="../assets/filter_icon.svg" style="width: 24px; height: 24px" />
+  </button>
+
+  <app-task-modal [task]="selectedTask"></app-task-modal>
+</div>

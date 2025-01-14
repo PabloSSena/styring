@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="card-container">
+    <div class="card-shadow"></div>
+    <div class="card text-center">
+      <h2>Styring</h2>
+      <img src="../reminder_icon.svg" alt="logo" />
+      <form [formGroup]="loginForm">
+        <div class="mb-3 text-start">
+          <label for="name" class="form-label">Nome</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Digite seu nome"
+          />
+        </div>
+        <div class="mb-3 text-start">
+          <label for="password" class="form-label">Senha</label>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Digite sua senha"
+          />
+        </div>
+      </form>
+      <div class="button-container">
+        <button
+          (click)="onSubmit()"
+          [disabled]="!loginForm.valid"
+          class="btn btn-success w-100"
+        >
+          Entrar
+        </button>
+        <button
+          (click)="navigate()"
+          class="btn btn-success w-100"
+          style="background-color: #0d0ab8"
+        >
+          Criar Conta
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

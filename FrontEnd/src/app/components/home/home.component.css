@@ -1,0 +1,33 @@
+.bg-gradient {
+  background: linear-gradient(180deg, #f3e8ff 0%, #e9d5ff 100%);
+}
+
+.bg-purple {
+  background-color: #9333ea !important;
+}
+
+.btn-purple {
+  background-color: #9333ea;
+  color: white;
+}
+
+.btn-purple:hover {
+  background-color: #7e22ce;
+  color: white;
+}
+
+.scrollable-container {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.container-task {
+  width: 10%;
+}
+
+.clickable {
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}

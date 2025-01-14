@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="card-container">
+    <div class="card-shadow"></div>
+    <div class="card text-center">
+      <h2>Styring</h2>
+      <form [formGroup]="registerForm">
+        <div class="mb-3 text-start">
+          <label for="name" class="form-label">Nome</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Digite seu nome"
+            [ngClass]="{
+              'is-invalid':
+                registerForm.get('name')?.invalid &&
+                registerForm.get('name')?.touched
+            }"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              registerForm.get('name')?.invalid &&
+              registerForm.get('name')?.touched
+            "
+          >
+            <small *ngIf="registerForm.get('name')?.errors?.['required']"
+              >Nome é obrigatório.</small
+            >
+          </div>
+        </div>
+        <div class="mb-3 text-start">
+          <label for="password" class="form-label">Senha</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Digite sua senha"
+            formControlName="password"
+            [ngClass]="{
+              'is-invalid':
+                registerForm.get('password')?.invalid &&
+                registerForm.get('password')?.touched
+            }"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              registerForm.get('password')?.invalid &&
+              registerForm.get('password')?.touched
+            "
+          >
+            <small *ngIf="registerForm.get('password')?.errors?.['required']"
+              >Senha é obrigatório.</small
+            >
+          </div>
+        </div>
+      </form>
+      <div class="button-container">
+        <button
+          (click)="onSubmit()"
+          class="btn btn-success w-100"
+          style="background-color: #0d0ab8"
+        >
+          Criar Conta
+        </button>
+        <button
+          (click)="navigate()"
+          class="btn btn-success w-100"
+          style="background-color: #363544"
+        >
+          Voltar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
