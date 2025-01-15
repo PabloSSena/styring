@@ -8,7 +8,7 @@ Este projeto consiste em uma aplicação desenvolvida utilizando **Angular** com
 
 - **Frontend**: Angular, Bootstrap
 - **Backend**: .NET 8
-- **Banco de Dados**: AWS RDS
+- **Banco de Dados**: AWS RDS (SQL Server)
 - **Hospedagem**: AWS EC2
 
 ## Como Configurar o Front
