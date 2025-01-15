@@ -26,3 +26,8 @@ Este projeto consiste em uma aplicação desenvolvida utilizando **Angular** com
 
 - Dentro da pasta api.Test
 - Rodar "dotnet watch run test"
+
+## Possíveis melhorias
+
+- Maior modularização do front-end, criar mais componentes para deixar o código mais fácil de dar manutenção.
+- Mais teste de integração no Back
